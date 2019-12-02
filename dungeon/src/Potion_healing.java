@@ -4,4 +4,5 @@ public class Potion_healing {
 	public Potion_healing() {
 		
 	}
+
 }

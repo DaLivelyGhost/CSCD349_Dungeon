@@ -27,6 +27,12 @@ public class Room {
 			this.icon = icon;
 		}
 	}
+	public void deleteContents() {
+		for(Object item: this.content) {
+			item = null;
+		}
+		this.objectNumber = 0;
+	}
 	@Override
 	public String toString() {	//IN PROGRESS
 		return this.icon;

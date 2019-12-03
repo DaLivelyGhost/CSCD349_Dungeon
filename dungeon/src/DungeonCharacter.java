@@ -1,4 +1,4 @@
 
-public interface DungeonCharacter {
+public abstract class DungeonCharacter {
 
 }

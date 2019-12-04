@@ -8,7 +8,8 @@ public class GameStart {
 		DungeonCharacter player = new DungeonCharacter();	//Default character; will need null race and null class
 		String name = playerName();
 		player.setName(name);								//DungeonCharacter will need a setName
-		playerClass(player);
+		//playerClass(player);				STUBBED OUT UNTIL HERO FACTORY COMPLETE
+		return player;
 	}
 	
 	public static String playerName() {
@@ -66,19 +67,27 @@ public class GameStart {
 				StartView.x();
 				size_x = input.nextInt();
 				input.nextLine();
-				System.out.println("");
+				//System.out.println("");
 			
 				StartView.y();
 				size_y = input.nextInt();
 				input.nextLine();
-				System.out.println("");
+				//System.out.println("");
 			}
 			catch(Exception e){
-				e = new Exception("enter a valid integer size, please.");
-			
+				e = new Exception("Please enter integer values");
+				StartView.dungeonException(e);
+				size_x = 0;
+				size_y = 0;
+				input = new Scanner(System.in);
+			}
+			if(size_x * size_y <= 6) {
+				StartView.invalidDimensions();
+				size_x = 0;
+				size_y = 0;
 			}
 		}
-		if(size_x * size_y >= 6) {
+		if(size_x * size_y > 6) {
 			Dungeon = new Dungeon(size_x, size_y);
 		}
 		return Dungeon;

@@ -6,11 +6,13 @@ public class Dungeon {
 	int y_dimension;
 	int player_x;
 	int player_y;
+	boolean vision;	//checks if a vision potion has been used (purely for toString;
 	
 	public Dungeon(int c, int r) {
 		this.Room = new Room[c][r];
 		this.x_dimension = c;
 		this.y_dimension = r;
+		vision = false;
 		
 		for(int i = 0; i < c; i++) {
 			for(int j = 0; j < r; j++) {
@@ -18,7 +20,7 @@ public class Dungeon {
 				populateRooms(Room, i, j);
 			}
 		}
-		distributeExits(this.x_dimension, this.y_dimension);
+		distributeExits(this.x_dimension, this.y_dimension);		//Player default location is distributed here. (cuz of the entrance)
 		distributePillars(this.x_dimension, this.y_dimension);
 		
 	}
@@ -67,10 +69,10 @@ public class Dungeon {
 		int entrance_y;
 		
 		do {
-			exit_x = r.nextInt(x - 1);
-			exit_y = r.nextInt(y - 1);
-			entrance_x = r.nextInt(x - 1);
-			entrance_y = r.nextInt(y - 1);
+			exit_x = r.nextInt(x);
+			exit_y = r.nextInt(y);
+			entrance_x = r.nextInt(x);
+			entrance_y = r.nextInt(y);
 		}while(Room[exit_x][exit_y].x != Room[entrance_x][entrance_y].x			
 				&& Room[exit_x][exit_y].y != Room[entrance_x][entrance_y].y);
 		
@@ -92,8 +94,8 @@ public class Dungeon {
 		
 		for(int i = 0; i < 4; i++) {	//choose 4 random rooms to put a pillar into.
 			do {
-			temp1 = r.nextInt(x - 1);
-			temp2 = r.nextInt(y - 1);
+			temp1 = r.nextInt(x);
+			temp2 = r.nextInt(y);
 			} while(Room[temp1][temp2].icon.compareTo("I") == 0 || Room[temp1][temp2].icon.compareTo("O") == 0
 					|| Room[temp1][temp2].icon.compareTo("$") == 0);
 			

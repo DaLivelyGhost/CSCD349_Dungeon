@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class GameCycle {
 	public static void beginAdventure(DungeonCharacter player, Dungeon Dungeon) {
@@ -6,6 +7,10 @@ public class GameCycle {
 		RoomOptions(player, Dungeon);
 	}
 	private static void RoomOptions(DungeonCharacter player, Dungeon Dungeon) {
-		//Gameplay loop goes here.
+		Scanner input = new Scanner(System.in);
+		int option = 0;
+		
+		GameView.move(Dungeon);
+		
 	}
 }

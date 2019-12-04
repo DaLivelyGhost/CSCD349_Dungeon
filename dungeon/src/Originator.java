@@ -6,33 +6,18 @@ public class Originator
 	
 	public void set(String state)
 	{
-       this.state = state;
 		 System.out.println("Creating save state:  " + state);
+		 this.state = state;
 	}
 	
 	 public SaveState saveToSS()
 	 {
-      
-		 System.out.println("Originator: Saving to List.");
-		 return new SaveState(this.state);
+		 System.out.println("Originator: Saving to Memento.");
+		 return new SaveState(state);
 	 }
-    public void restoreFromSS(SaveState ss)
-    {
-    	 this.state = ss.getSavedState();
+     public void restoreFromSS(SaveState ss)
+     {
+    	 state = ss.getSavedState();
     	 System.out.println("Loading save state: " + state);
-    }
-    
-    public static class SaveState {
-         private final String state;
-   
-         public SaveState(String stateToSave) {
- 	         state = stateToSave;
-         }
-   
-         private String getSavedState() 
-         {
-            return state;
-         }
-   }
-
+    	 }
 }

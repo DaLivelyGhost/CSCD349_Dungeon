@@ -11,7 +11,7 @@ public class StartView {
 				+ "3.Thief ");
 	}
 	public static void dungeonSize() {
-		System.out.println("What size of dungeon will you explore? (must have atleast 5 rooms)");
+		System.out.println("What size of dungeon will you explore? (must have over 6 rooms)");
 	}
 	public static void x() {
 		System.out.print("x:");
@@ -19,5 +19,12 @@ public class StartView {
 	public static void y() {
 		System.out.print("y:");
 	}
-	
+	public static void dungeonException(Exception e) {
+		System.out.println(e);
+		System.out.println("");
+	}
+	public static void invalidDimensions() {
+		System.out.println("Please enter larger dimensions");
+		System.out.println("");
+	}
 }

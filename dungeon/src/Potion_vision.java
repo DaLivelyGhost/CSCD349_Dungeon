@@ -4,5 +4,7 @@ public class Potion_vision {
 	public Potion_vision() {
 		
 	}
-
+	public void drink() {
+		
+	}
 }

@@ -37,26 +37,27 @@ public class Dungeon {
 		//------------------------------------------------------	
 			//TO DO: build items to put into these rooms
 		//------------------------------------------------------		
-		if(pit > 8) {					//20% chance
-			Room[i][j].populateRoom(new Pit());					//pit item goes here
-			Room[i][j].setIcon("P");
+		if(Room[i][j].icon.compareTo("O") != 0 && Room[i][j].icon.compareTo("I") != 0) {
+			if(pit > 8) {					//20% chance
+				Room[i][j].populateRoom(new Pit());					//pit item goes here
+				Room[i][j].setIcon("P");
+			}
+			if(vision > 8) {				//20% chance
+				Room[i][j].populateRoom(new Potion_vision());		//vision potion item goes here
+				Room[i][j].setIcon("V");
+			}
+			if(healing > 8) {				//20% chance
+				Room[i][j].populateRoom(new Potion_healing());		//healing potion item goes here
+				Room[i][j].setIcon("H");
+			}
+			//------------------------------------------------------		
+				//Monster is stubbed out until the monster factory is complete
+			//------------------------------------------------------		
+//			if(monster > 8) {				//20% chance
+//				Room[i][j].populateRoom();					//Monster goes here
+//				Room[i][j].setIcon("X");
+//			}
 		}
-		if(vision > 8) {				//20% chance
-			Room[i][j].populateRoom(new Potion_vision());		//vision potion item goes here
-			Room[i][j].setIcon("V");
-		}
-		if(healing > 8) {				//20% chance
-			Room[i][j].populateRoom(new Potion_healing());		//healing potion item goes here
-			Room[i][j].setIcon("H");
-		}
-		//------------------------------------------------------		
-			//Monster is stubbed out until the monster factory is complete
-		//------------------------------------------------------		
-//		if(monster > 8) {				//20% chance
-//			Room[i][j].populateRoom();					//Monster goes here
-//			Room[i][j].setIcon("X");
-//		}
-		
 	}
 	private void distributeExits(int x, int y) {
 		Random r = new Random();
@@ -112,7 +113,7 @@ public class Dungeon {
 		//---------------------------------------------------
 			//Top wall
 		//---------------------------------------------------
-		for(int m = 0; m < 2 * this.x_dimension + 1; m++) {
+		for(int m = 0; m < 2 * this.y_dimension + 1; m++) {
 			toReturn = toReturn.concat("*");
 			toReturn = toReturn.concat(" ");
 		}
@@ -152,7 +153,7 @@ public class Dungeon {
 				//Horizontal Doors
 			//---------------------------------------------------
 			if(i != x_dimension - 1) {
-				for(int m = 0; m < 2 * this.x_dimension + 1; m++) {
+				for(int m = 0; m < 2 * this.y_dimension + 1; m++) {
 					if(m % 2 != 0) {
 						toReturn = toReturn.concat("-");
 					}
@@ -167,7 +168,7 @@ public class Dungeon {
 		//---------------------------------------------------
 			//Bottom wall
 		//---------------------------------------------------
-		for(int m = 0; m < 2 * this.x_dimension + 1; m++) {
+		for(int m = 0; m < 2 * this.y_dimension + 1; m++) {
 			toReturn = toReturn.concat("*");
 			toReturn = toReturn.concat(" ");
 		}

@@ -1,4 +1,4 @@
 
-public class MonsterFactory {
+public class MonsterFactory extends Monster{
 
 }

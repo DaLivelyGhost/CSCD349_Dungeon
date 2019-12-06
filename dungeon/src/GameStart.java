@@ -1,40 +1,95 @@
 import java.util.Scanner;
 
 public class GameStart {
-	//Player name method
-	public static void playerName() {
+	//-------------------------------------------
+		//Character Creation
+	//-------------------------------------------
+	public static DungeonCharacter PlayerCreate() {
+		DungeonCharacter player = new DungeonCharacter();	//Default character; will need null race and null class
+		String name = playerName();
+		player.setName(name);								//DungeonCharacter will need a setName
+		//playerClass(player);				STUBBED OUT UNTIL HERO FACTORY COMPLETE
+		return player;
+	}
+	
+	public static String playerName() {
 		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Enter the name of your hero:");
+		String name = "";
+		StartView.playerName();
 		
 		try {
-			
+			name = input.nextLine();
 		}
 		catch(Exception e) {
 			e = new Exception("Really don't know how you managed this.");
 			playerName();
 		}
-		playerClass(input);
+		return name;
 	}
 	//Player class method
-	private static void playerClass(Scanner input) {
+	private static void playerClass(DungeonCharacter player) {
+		StartView.playerClass();
+		Scanner input = new Scanner(System.in);
+		int choice = 0;
 		
-		dungeonSize(input);
-	}
-	//size of dungeon method
-	private static void dungeonSize(Scanner input) {
-		System.out.println("What size of dungeon will you explore?");
-		int size_x = 0, size_y = 0;
 		try {
-			
+			choice = input.nextInt();
+			input.nextLine();
 		}
-		catch(Exception e){
-			e = new Exception("enter a valid integer size, please.");
+		catch(Exception e) {
+			e = new Exception("Invalid input");
+			playerClass(player);
 		}
-		createDungeon(input, size_x, size_y);
+		switch(choice) {
+		//This will need work. Feel free to change this; I assume it's wrong.
+//		case 1:
+//			player.role = new Warrior();
+//		case 2:
+//			player.role = new Sorceress();
+//		case 3:
+//			player.role = new Thief();
+		}
+		
 	}
-	//Dungeon Generation
-	private static void createDungeon(Scanner input, int size_x, int size_y) {
-		Dungeon Dungeon = new Dungeon(size_x, size_y);
+	//-------------------------------------------
+		//Dungeon Creation
+	//-------------------------------------------
+	public static Dungeon dungeonSize() {
+		StartView.dungeonSize();
+		Scanner input = new Scanner(System.in);
+		
+		int size_x = 0, size_y = 0;
+		Dungeon Dungeon = null;
+		
+		while(size_x * size_y <= 6) {
+			try {
+			
+				StartView.x();
+				size_x = input.nextInt();
+				input.nextLine();
+				//System.out.println("");
+			
+				StartView.y();
+				size_y = input.nextInt();
+				input.nextLine();
+				//System.out.println("");
+			}
+			catch(Exception e){
+				e = new Exception("Please enter integer values");
+				StartView.dungeonException(e);
+				size_x = 0;
+				size_y = 0;
+				input = new Scanner(System.in);
+			}
+			if(size_x * size_y <= 6) {
+				StartView.invalidDimensions();
+				size_x = 0;
+				size_y = 0;
+			}
+		}
+		if(size_x * size_y > 6) {
+			Dungeon = new Dungeon(size_x, size_y);
+		}
+		return Dungeon;
 	}
 }

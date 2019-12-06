@@ -1,3 +1,4 @@
+
 public class MonsterFactory extends Monster{
    Monster makeMonster(String type)
    {

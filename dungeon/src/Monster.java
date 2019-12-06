@@ -1,4 +1,3 @@
-
 public abstract class Monster extends DungeonCharacter{
    private int hpPerTurn;
    public Monster(String name, int hp, int attackSpeed, 
@@ -39,5 +38,3 @@ public abstract class Monster extends DungeonCharacter{
 		   System.out.println();
 	   }//end can heal
    }//end heal method
-
-}

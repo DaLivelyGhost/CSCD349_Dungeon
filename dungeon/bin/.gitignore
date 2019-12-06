@@ -14,3 +14,11 @@
 /dungeonAdventure.class
 /entrance.class
 /exit.class
+/Attack.class
+/CrushingBlow.class
+/Hero.class
+/Monster.class
+/Originator.class
+/SaveList.class
+/SaveState.class
+/Warrior.class

@@ -42,22 +42,18 @@ public class Dungeon {
 		if(Room[i][j].icon.compareTo("O") != 0 && Room[i][j].icon.compareTo("I") != 0) {
 			if(pit > 8) {					//20% chance
 				Room[i][j].populateRoom(new Pit());					//pit item goes here
-				Room[i][j].setIcon("P");
 			}
 			if(vision > 8) {				//20% chance
 				Room[i][j].populateRoom(new Potion_vision());		//vision potion item goes here
-				Room[i][j].setIcon("V");
 			}
 			if(healing > 8) {				//20% chance
 				Room[i][j].populateRoom(new Potion_healing());		//healing potion item goes here
-				Room[i][j].setIcon("H");
 			}
 			//------------------------------------------------------		
 				//Monster is stubbed out until the monster factory is complete
 			//------------------------------------------------------		
 //			if(monster > 8) {				//20% chance
 //				Room[i][j].populateRoom();					//Monster goes here
-//				Room[i][j].setIcon("X");
 //			}
 		}
 	}

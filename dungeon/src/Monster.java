@@ -1,21 +1,48 @@
 public abstract class Monster extends DungeonCharacter{
-
-   private int hpPerTurn;
+   protected int minHeal,maxHeal;
+   protected double healChance;
+   protected int hpPerTurn;
    
-   public Monster(String name, int hp, int attackSpeed, 
-                  double hitChance, int minDamage, int maxDamage, 
-                  double healChance, int minheal, int maxheal)
+   public Monster()
    {
-      super(name, hp, attackSpeed, hitChance, minDamage, maxDamage);
       this.healChance = healChance;
-   	this.maxHeal = maxHeal;
-   	this.minHeal = minHeal;
+      this.minHeal = minHeal;
+      this.maxHeal = maxHeal;
    }
    
+   public void setHealChance(double healChance)
+   {
+      this.healChance = healChance;
+   }
+   
+   public double getHealChance()
+   {
+      return healChance;
+   }
+   
+   public void setMinHeal(int minHeal)
+   {
+      this.minHeal = minHeal;
+   }
+   
+   public int getMinHeal()
+   {
+      return minHeal;
+   }
+   
+   public void setMaxHeal(int maxHeal)
+   {
+      this.maxHeal = maxHeal;
+   }
+   
+   public int getMaxHeal()
+   {
+      return maxHeal;
+   }
    
    public void setHpPerTurn(int hpPerTurn)
    {
-      this.hpPerTurn;
+      this.hpPerTurn = hpPerTurn;
    }
    
    public int getHpPerTurn()
@@ -29,14 +56,15 @@ public abstract class Monster extends DungeonCharacter{
 	   boolean canHeal;
 	   int healPoints;
 
-	   canHeal = (Math.random() <= healChance) && (hitPoints > 0);
+	   canHeal = (Math.random() <= healChance) && (hpPerTurn > 0);
 
 	   if(canHeal)
 	   {
 		   healPoints = (int)(Math.random() * (maxHeal - minHeal + 1)) + minHeal;
-		   addHitPoints(healPoints);
+		   addHealth(healPoints);
 		   System.out.println(name + " healed itself for " + healPoints + " points.\n"
-							   + "Total hit points remaining are: " + hitPoints);
+							   + "Total hit points remaining are: " + hpPerTurn);
 		   System.out.println();
 	   }//end can heal
    }//end heal method
+}   

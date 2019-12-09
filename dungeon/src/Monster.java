@@ -1,5 +1,7 @@
 public abstract class Monster extends DungeonCharacter{
+
    private int hpPerTurn;
+   
    public Monster(String name, int hp, int attackSpeed, 
                   double hitChance, int minDamage, int maxDamage, 
                   double healChance, int minheal, int maxheal)
@@ -21,7 +23,7 @@ public abstract class Monster extends DungeonCharacter{
       return hpPerTurn;
    }
    
-   //MUST WORK ON HEAL FOR MONSTERS 
+   //MUST WORK ON HEAL FOR MONSTERS
    public void heal()
    {
 	   boolean canHeal;

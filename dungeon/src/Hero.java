@@ -20,7 +20,7 @@ public abstract class Hero extends DungeonCharacter{
 	public int getTotalPillars() {
 		return this.totalPillars;
 	}
-	
+	 
 	public void setTotalHealthPots(int totalHealthPots) {
 		this.totalHealthPots = totalHealthPots;
 	}

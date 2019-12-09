@@ -9,4 +9,5 @@ public class HeroFactory extends Hero{
 		
 		return null;
 	}
+
 }

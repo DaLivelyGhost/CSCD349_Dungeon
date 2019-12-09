@@ -21,7 +21,7 @@ public abstract class Monster extends DungeonCharacter{
       return hpPerTurn;
    }
    
-   //MUST WORK ON HEAL FOR MONSTERS
+   //MUST WORK ON HEAL FOR MONSTERS 
    public void heal()
    {
 	   boolean canHeal;

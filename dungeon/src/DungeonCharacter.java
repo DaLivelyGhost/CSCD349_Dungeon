@@ -7,6 +7,8 @@ public  class DungeonCharacter {
 	
 	public DungeonCharacter() {
 		this.setName(name);
+		this.setName(name);
+		this.characterType = characterType;
 		this.hp = hp;
 		this.attackSpeed = attackSpeed;
 		this.hitChance = hitChance;
@@ -17,7 +19,6 @@ public  class DungeonCharacter {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public String getName() {
 		return name;
 	}

@@ -18,6 +18,11 @@ public class GameView {
 				+ ".\n" + "Your goal is to find the 4 pillars of OO and escape through the exit alive!");
 		printDivider();
 	}
+	public static void roomOptions() {
+		System.out.println("1. Save\n"
+							+ "2. Move\n"
+							+ "3. Inventory");
+	}
 	public static void move(Dungeon Dungeon, String[] choice) {
 		System.out.println("Move to which room?");
 		System.out.println("");
@@ -56,8 +61,9 @@ public class GameView {
 		System.out.println(options);
 	}
 	public static void RoomEnter(Dungeon Dungeon) {
-		String output = Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).roomEnter();
+		String output = Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).description;
 		System.out.println(output);
+		
 	}
 	//----------------------------------------------------------------
 		//Combat

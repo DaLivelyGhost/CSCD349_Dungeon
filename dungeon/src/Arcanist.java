@@ -1,5 +1,5 @@
 
-public class Arcanist extends Hero{
+public  class Arcanist extends Hero{
 	
 	public Arcanist() {
 		this.characterType = "Arcanist";

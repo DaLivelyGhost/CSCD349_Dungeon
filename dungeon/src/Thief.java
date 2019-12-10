@@ -1,5 +1,5 @@
 
-public class Thief extends Hero{
+public  class Thief extends Hero{
 	
 	public Thief() {
 		this.characterType = "Thief";

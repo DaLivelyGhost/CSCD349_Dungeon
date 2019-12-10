@@ -1,4 +1,4 @@
-public class Skeleton extends Monster{
+public  class Skeleton extends Monster{
    public Skeleton()
    {
       this.name = "Skeleton";

@@ -8,7 +8,9 @@ public class StartView {
 		System.out.println("Enter your class: \n"
 				+ "1.Warrior \n"
 				+ "2.Sorceress \n"
-				+ "3.Thief ");
+				+ "3.Thief \n"
+				+ "4 Paladin\n"
+				+ "5 Arcanist\n");
 	}
 	public static void dungeonSize() {
 		System.out.println("What size of dungeon will you explore? (must have over 6 rooms)");

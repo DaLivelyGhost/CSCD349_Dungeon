@@ -27,7 +27,7 @@ public class GameStart {
 		return name;
 	}
 	//Player class method
-	private static void playerClass(DungeonCharacter player) {
+	private static void playerClass(Hero player) {
 		StartView.playerClass();
 		Scanner input = new Scanner(System.in);
 		int choice = 0;
@@ -42,12 +42,16 @@ public class GameStart {
 		}
 		switch(choice) {
 		//This will need work. Feel free to change this; I assume it's wrong.
-//		case 1:
-//			player.role = new Warrior();
-//		case 2:
-//			player.role = new Sorceress();
-//		case 3:
-//			player.role = new Thief();
+		case 1:
+			player.makeHero("Warrior");
+		case 2:
+			player.makeHero("Sorceress");
+		case 3:
+			player.makeHero("Thief");
+		case 4:
+			player.makeHero("Paladin");
+		case 5:
+			player.makeHero("Arcanist");
 		}
 		
 	}

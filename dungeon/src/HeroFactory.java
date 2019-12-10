@@ -14,8 +14,6 @@ public class HeroFactory extends Hero{
 		}  else if (type.equals("Arcanist")) {
 			return new Arcanist();
 		}			
-			return null;
-		}
+		return null;
 	}
 }
-

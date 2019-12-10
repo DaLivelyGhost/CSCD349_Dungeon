@@ -1,7 +1,7 @@
 public class Zombie extends Monster{
    public Zombie()
    {
-      this.name = "Beast";
+      this.name = "Zombie";
       this.hp = 200;
       this.attackSpeed = 3;
       this.hitChance = .3;

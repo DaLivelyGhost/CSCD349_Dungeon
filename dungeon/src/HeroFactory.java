@@ -15,7 +15,7 @@ public class HeroFactory extends Hero{
 			return new Arcanist();
 		}			
 			return null;
-		}
 	}
+	
 }
 

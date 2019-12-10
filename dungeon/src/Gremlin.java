@@ -1,4 +1,4 @@
-public class Gremlin extends Monster{
+public  class Gremlin extends Monster{
    public Gremlin()
    {
       this.name = "Gremlin";

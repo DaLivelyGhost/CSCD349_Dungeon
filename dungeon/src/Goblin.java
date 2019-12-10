@@ -1,4 +1,5 @@
 public  class Goblin extends Monster{
+	
    public Goblin()
 	{
       this.name = "Goblin";

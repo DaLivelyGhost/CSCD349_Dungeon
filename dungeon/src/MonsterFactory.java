@@ -1,28 +1,30 @@
 
 public class MonsterFactory extends Monster
 {
-   Monster makeMonster(String type)
+   static Monster makeMonster(String type)
    {
+	  Monster monster = null;
+	  
       if(type.equals("Ogre"))
       {
-         return new Ogre();
+         monster = new Ogre();
       }
       else if(type.equals("Goblin"))
       {
-         return new Goblin();
+         monster = new Goblin();
       }
       else if(type.equals("Gremlin"))
       {
-         return new Gremlin();
+         monster = new Gremlin();
       }
       else if(type.equals("Skeleton"))
       {
-         return new Skeleton();
+         monster = new Skeleton();
       }
       else if(type.equals("Zombie"))
       {
-         return new Zombie();
+         monster = new Zombie();
       }
-      return null;
+      return monster;
    }
 }

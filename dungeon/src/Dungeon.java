@@ -55,7 +55,8 @@ public class Dungeon {
 			if(monster > 8) {//20% chance
 				int monsterType = r.nextInt(6);
 				if(monsterType == 0) {
-					Room[i][j].populateRoom(MonsterFactory.makeMonster("Goblin"));					//Monster goes here
+					Room[i][j].populateRoom(MonsterFactory.makeMonster("Goblin"));
+				} //Monster goes here
 				if(monsterType == 1) {
 					
 				}

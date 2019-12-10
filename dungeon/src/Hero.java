@@ -1,5 +1,5 @@
 
-public abstract class Hero extends DungeonCharacter{
+public class Hero extends DungeonCharacter{
 	
 	protected int totalHealthPots, totalVisionPots, totalPillars;
 	protected double blockChance;

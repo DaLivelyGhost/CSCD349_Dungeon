@@ -1,20 +1,22 @@
 
 public class HeroFactory extends Hero{
 
-	Hero makeHero(String type) {
+	static Hero makeHero(String type) {
+		
+		Hero hero = null;
 		
 		if(type.equals("Warrior")) {
-			return new Warrior();
+			hero = new Warrior();
 		} else if (type.equals("Sorceress")) {
-			return new Sorceress();
+			hero = new Sorceress();
 		}  else if (type.equals("Thief")) {
-			return new Thief();
+			hero = new Thief();
 		}  else if (type.equals("Paladin")) {
-			return new Paladin();
+			hero = new Paladin();
 		}  else if (type.equals("Arcanist")) {
-			return new Arcanist();
+			hero = new Arcanist();
 		}			
-			return null;
+			return hero;
 	}
 	
 }

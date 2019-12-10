@@ -5,10 +5,10 @@ public class GameStart {
 		//Character Creation
 	//-------------------------------------------
 	public static DungeonCharacter PlayerCreate() {
-		DungeonCharacter player = new DungeonCharacter();	//Default character; will need null race and null class
+		Hero player = new Hero();	//Default character; will need null race and null class
 		String name = playerName();
 		player.setName(name);								//DungeonCharacter will need a setName
-		//playerClass(player);				STUBBED OUT UNTIL HERO FACTORY COMPLETE
+		playerClass(player);				
 		return player;
 	}
 	
@@ -43,15 +43,15 @@ public class GameStart {
 		switch(choice) {
 		//This will need work. Feel free to change this; I assume it's wrong.
 		case 1:
-			player.makeHero("Warrior");
+			player = HeroFactory.makeHero("Warrior");
 		case 2:
-			player.makeHero("Sorceress");
+			player = HeroFactory.makeHero("Sorceress");
 		case 3:
-			player.makeHero("Thief");
+			player = HeroFactory.makeHero("Thief");
 		case 4:
-			player.makeHero("Paladin");
+			player = HeroFactory.makeHero("Paladin");
 		case 5:
-			player.makeHero("Arcanist");
+			player = HeroFactory.makeHero("Arcanist");
 		}
 		
 	}

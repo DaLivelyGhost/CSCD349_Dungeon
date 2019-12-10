@@ -52,9 +52,14 @@ public class Dungeon {
 			//------------------------------------------------------		
 				//Monster is stubbed out until the monster factory is complete
 			//------------------------------------------------------		
-//			if(monster > 8) {				//20% chance
-//				Room[i][j].populateRoom();					//Monster goes here
-//			}
+			if(monster > 8) {//20% chance
+				int monsterType = r.nextInt(6);
+				if(monsterType == 0) {
+					Room[i][j].populateRoom(MonsterFactory.makeMonster("Goblin"));					//Monster goes here
+				if(monsterType == 1) {
+					
+				}
+			}
 		}
 	}
 	private void distributeExits(int x, int y) {

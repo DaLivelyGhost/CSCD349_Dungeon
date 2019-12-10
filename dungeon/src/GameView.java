@@ -65,6 +65,21 @@ public class GameView {
 		System.out.println(output);
 		
 	}
+	public static void pickUp(int pickup) {
+		printDivider();
+		if(pickup == 3) {
+			System.out.println("You acquired a pillar of OO!\n" 
+					+ "You come closer to finishing your goal!");
+		}
+		if(pickup == 4) {
+			System.out.println("You acquired a healing potion!\n"
+					+ "This will get you out of a jam!");
+		}
+		if(pickup == 5) {
+			System.out.println("You acquired a vision potion!\n"
+					+ "The path to the finish becomes clearer!");
+		}
+	}
 	//----------------------------------------------------------------
 		//Combat
 	//----------------------------------------------------------------

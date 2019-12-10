@@ -87,11 +87,21 @@ public class GameCycle {
 			combat(Dungeon, player);
 		}
 		else {
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] != null) {
+				GameView.pickUp(3);
+			}
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] != null) {
+				GameView.pickUp(4);
+			}
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] != null) {
+				GameView.pickUp(5);
+			}
 			RoomOptions(Dungeon, player);
 		}
 	}
 	private static void combat(Dungeon Dungeon, DungeonCharacter player) {
 		System.out.print("combat");
+		Monster theMonster = (Monster)Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6];
 		RoomOptions(Dungeon, player);
 	}
 	//----------------------------------------------------------------

@@ -100,7 +100,7 @@ public class GameCycle {
 			input.nextLine();
 			
 			if(choice == 1) {
-				player.useHealingPotion();
+				Potion_healing.useHealingPotion(player);
 			}
 			if (choice == 2) {
 				player.useVisionPotion();

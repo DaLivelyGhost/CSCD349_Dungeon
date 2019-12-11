@@ -48,11 +48,6 @@ public  class DungeonCharacter {
 		System.out.println(this.name + " hit " + " for <" + hp + "> points damage.");
 		System.out.println(that.name + " now has " + that.hp + " hit points remaining.");
 		System.out.println();
-		
-		if(that.hp <= 0) {
-			System.out.println(getName() + " is dead, you have lost...");
-			//game end
-		}
 	}
 	
 	public boolean isAlive() {

@@ -38,7 +38,7 @@ public class Room {
 		if(item instanceof Pillar_of_OO) {	//3 for pillar
 			this.content[3] = item;
 			this.setIcon("$");
-			this.description = "A pillar of OO resides in this room. It's faint glow draws you in.";
+			this.description = "A pillar of OO resides in this room! It's faint glow draws you in.";
 		}
 		if(item instanceof Potion_healing) {	//4 for healing potion
 			this.content[4] = item;

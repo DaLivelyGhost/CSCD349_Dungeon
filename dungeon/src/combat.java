@@ -9,7 +9,7 @@ public class combat {
 		Random r = new Random();
 		
 		System.out.println(attacker.getName() + " battles " + attacky.getName());
-		System.out.println("---------------------------------------------");
+		GameView.printDivider();
 
 		//do battle
 		while (attacker.isAlive() && attacky.isAlive()) {
@@ -20,7 +20,8 @@ public class combat {
 			if (attacky.isAlive())
 			    attacky.basicAttack(attacker);
 		}//end battle loop
-
+		
+		GameView.printDivider();
 		if (!attacky.isAlive()) {
 		    System.out.println(attacker.getName() + " destroyed the " + attacky.getName());
 			int reward = r.nextInt(11);
@@ -37,17 +38,30 @@ public class combat {
 		int choice = 0;
 		Scanner attack = new Scanner(System.in);
 
-		    System.out.println("1. Attack Opponent");
-		    System.out.println("2. " + attacker.specialAttack.toString());
-		    System.out.print("Choose an option: ");
-
-		   if(choice == 1) {
-			   attacker.basicAttack(attacky);
-		   } else if (choice == 2) {
-			   attacker.specialAttack(attacky);
-		   } else {
-			   System.out.println("That was not a valid option!\n");
-			   battleChoices(attacker, attacky);
-		   }
+		System.out.println("1. Attack Opponent");
+		System.out.println("2. " + attacker.specialAttack.toString());
+		System.out.print("Choose an option: ");
+		    
+		while(choice == 0) { 
+			try {
+				choice = attack.nextInt();
+				attack.nextLine();
+				
+				if(choice != 1 && choice != 2) {
+					GameView.invalidInput();
+					choice = 0;
+				}
+			}
+			catch(Exception e) {
+				e = new Exception("Invalid input type!");
+				GameView.printException(e);
+				choice = 0;
+			}
+		}
+		if(choice == 1) {
+			attacker.basicAttack(attacky);
+		} else if (choice == 2) {
+			attacker.specialAttack(attacky);
+		}
     }//end battleChoices method
 }

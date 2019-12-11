@@ -46,18 +46,13 @@ public  class DungeonCharacter {
 		}
 	}
 	
-	public void subtractHealth(int hp, DungeonCharacter that) {
+	public void subtractHealth(int damage, DungeonCharacter that) {
 		
-		this.hp -= hp;
+		that.hp -= damage;
 			
 		System.out.println(this.name + " hit " + " for <" + hp + "> points damage.");
 		System.out.println(that.name + " now has " + that.hp + " hit points remaining.");
 		System.out.println();
-		
-		if(this.hp <= 0) {
-			System.out.println(getName() + " is dead, you have lost...");
-			//game end
-		}
 	}
 	
 >>>>>>> Stashed changes

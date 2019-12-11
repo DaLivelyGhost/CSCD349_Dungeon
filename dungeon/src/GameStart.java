@@ -5,10 +5,9 @@ public class GameStart {
 		//Character Creation
 	//-------------------------------------------
 	public static DungeonCharacter PlayerCreate() {
-		Hero player = new Hero();	//Default character; will need null race and null class
 		String name = playerName();
+		Hero player = playerClass();	//Default character; will need null race and null class
 		player.setName(name);								//DungeonCharacter will need a setName
-		playerClass(player);				
 		return player;
 	}
 	
@@ -27,33 +26,35 @@ public class GameStart {
 		return name;
 	}
 	//Player class method
-	private static void playerClass(Hero player) {
+	private static Hero playerClass() {
 		StartView.playerClass();
 		Scanner input = new Scanner(System.in);
 		int choice = 0;
 		
-		try {
-			choice = input.nextInt();
-			input.nextLine();
-		}
-		catch(Exception e) {
-			e = new Exception("Invalid input");
-			playerClass(player);
+		while(choice == 0) {
+			try {
+				choice = input.nextInt();
+				input.nextLine();
+			}
+			catch(Exception e) {
+				e = new Exception("Invalid input");
+				choice = 0;
+			}
 		}
 		switch(choice) {
 		//This will need work. Feel free to change this; I assume it's wrong.
 		case 1:
-			player = HeroFactory.makeHero("Warrior");
+			return HeroFactory.makeHero("Warrior");
 		case 2:
-			player = HeroFactory.makeHero("Sorceress");
+			return HeroFactory.makeHero("Sorceress");
 		case 3:
-			player = HeroFactory.makeHero("Thief");
+			return HeroFactory.makeHero("Thief");
 		case 4:
-			player = HeroFactory.makeHero("Paladin");
+			return HeroFactory.makeHero("Paladin");
 		case 5:
-			player = HeroFactory.makeHero("Arcanist");
+			return HeroFactory.makeHero("Arcanist");
 		}
-		
+		return HeroFactory.makeHero("Warrior");
 	}
 	//-------------------------------------------
 		//Dungeon Creation

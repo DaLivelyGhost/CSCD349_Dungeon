@@ -83,4 +83,11 @@ public class GameView {
 	//----------------------------------------------------------------
 		//Combat
 	//----------------------------------------------------------------
+	public static void GameOver() {
+		System.out.println("You Died\n"
+				+ "Try again?\n"
+				+ "\n"
+				+ "1. Accept\n"
+				+ "2. Decline");
+	}
 }

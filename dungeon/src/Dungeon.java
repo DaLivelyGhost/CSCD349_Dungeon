@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class Dungeon {
 	private Room[][] Room;
-	int x_dimension;
-	int y_dimension;
+	final int x_dimension;
+	final int y_dimension;
 	int player_x;
 	int player_y;
-	boolean vision;	//checks if a vision potion has been used (purely for toString;
+	boolean vision;	//checks if a vision potion has been used (purely for toString);
 	
 	public Dungeon(int c, int r) {
 		this.Room = new Room[c][r];
@@ -48,18 +48,24 @@ public class Dungeon {
 			}
 			if(healing > 8) {				//20% chance
 				Room[i][j].populateRoom(new Potion_healing());		//healing potion item goes here
-			}
-			//------------------------------------------------------		
-				//Monster is stubbed out until the monster factory is complete
-			//------------------------------------------------------		
+			}		
 			if(monster > 8) {//20% chance
-				int monsterType = r.nextInt(6);
+				int monsterType = r.nextInt(5);
 				if(monsterType == 0) {
-					Room[i][j].populateRoom(MonsterFactory.makeMonster("Goblin"));
+					Room[i][j].populateRoom(MonsterFactory.makeMonster("Ogre"));
 				} //Monster goes here
 				if(monsterType == 1) {
-					
+					Room[i][j].populateRoom(MonsterFactory.makeMonster("Goblin"));
 				}
+				if(monsterType == 2) {
+					Room[i][j].populateRoom(MonsterFactory.makeMonster("Gremlin"));
+				}
+				if(monsterType == 3) {
+					Room[i][j].populateRoom(MonsterFactory.makeMonster("Skeleton"));
+				}
+				if(monsterType == 4) {
+					Room[i][j].populateRoom(MonsterFactory.makeMonster("Zombie"));
+				}	
 			}
 		}
 	}

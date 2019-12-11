@@ -11,9 +11,10 @@ public class GameCycle {
 	private static void RoomOptions(Dungeon Dungeon, DungeonCharacter player) {
 		Scanner input = new Scanner(System.in);
 		int option = 0;
-		GameView.roomOptions();
+		
 		while(option == 0) {
 			try {
+				GameView.roomOptions();
 				option = input.nextInt();
 				input.nextLine();
 				
@@ -90,7 +91,14 @@ public class GameCycle {
 		int choice = 0;
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println(player.getName() + " you have " + player.getTotalHealthPots() + " health pots, " + player.getTotalVisionPots() + " vision pots, and " + player.getTotalPillars() + " Pillars of OO");
+		System.out.println(player.getName() 
+				+ " you have " 
+				+ player.getTotalHealthPots() 
+				+ " health pots, " 
+				+ player.getTotalVisionPots() 
+				+ " vision pots, and " 
+				+ player.getTotalPillars() 
+				+ " Pillars of OO");
 		System.out.println("1. Use Health Pot");
 		System.out.println("2. Use Vision Pot");
 		System.out.println("3. Back to the game");
@@ -113,27 +121,52 @@ public class GameCycle {
 	private static void RoomEnter(Dungeon Dungeon, DungeonCharacter player) {
 		GameView.RoomEnter(Dungeon);
 		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6] != null) {
-			combat(Dungeon, player);
+			combat.battle(player, (Monster)Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6]);
+			if(player.isAlive() == false) {
+				GameOver();
+			}
 		}
 		else {
-			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] != null) {
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[0] != null) {//pit
+				//TO DO: damage player
+			}
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[2] != null) {//exit
+				//TO DO: check for if 4 pillars are collected. If so, end game.
+			}
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] != null) {//pillar
 				GameView.pickUp(3);
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] = null;
 			}
-			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] != null) {
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] != null) {//healing pot
 				GameView.pickUp(4);
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] = null;
 			}
-			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] != null) {
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] != null) {//vision pot
 				GameView.pickUp(5);
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] = null;
 			}
 			RoomOptions(Dungeon, player);
 		}
 	}
-	private static void combat(Dungeon Dungeon, DungeonCharacter player) {
-		System.out.print("combat");
-		Monster theMonster = (Monster)Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6];
-		RoomOptions(Dungeon, player);
+	private static void GameOver() {
+		Scanner input = new Scanner(System.in);
+		int restart = 0;
+		GameView.GameOver();
+		while(restart == 0){
+			try {
+				restart = input.nextInt();
+				input.nextLine();
+				
+				if(restart != 1 || restart != 2) {
+					GameView.invalidInput();
+					restart = 0;
+				}
+			}
+			catch(Exception e) {
+				e = new Exception("Invalid input type!");
+				GameView.printException(e);
+				restart = 0;
+			}
+		}
 	}
-	//----------------------------------------------------------------
-		//Combat
-	//----------------------------------------------------------------
 }

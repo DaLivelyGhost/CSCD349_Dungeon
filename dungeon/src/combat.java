@@ -1,10 +1,12 @@
 import java.util.Scanner;
+import java.util.Random;
 public class combat {
 //engine for gameplay
 
 	public static void battle(DungeonCharacter attacker, DungeonCharacter attacky) {
 
 		Scanner input = new Scanner(System.in);
+		Random r = new Random();
 		
 		System.out.println(attacker.getName() + " battles " + attacky.getName());
 		System.out.println("---------------------------------------------");
@@ -19,10 +21,15 @@ public class combat {
 			    attacky.basicAttack(attacker);
 		}//end battle loop
 
-		if (!attacky.isAlive())
+		if (!attacky.isAlive()) {
 		    System.out.println(attacker.getName() + " destroyed the " + attacky.getName());
-		else if (!attacker.isAlive())
+			int reward = r.nextInt(11);
+			if(reward > 7) {
+				//Give player a health pot
+			}
+		}else if (!attacker.isAlive()) {
 			System.out.println(attacker.getName() + " was destroyed by the " + attacky.getName());
+		}
 	}//end battle method
 
 	//Hero picks an attack style, attacks go through, and continues until one wins.

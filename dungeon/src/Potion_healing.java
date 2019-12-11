@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Potion_healing{
 	
@@ -13,11 +14,13 @@ public class Potion_healing{
 	
 	public static void useHealingPotion(Hero player) {
 		
+		Random r = new Random();
+		
 		if(player.getTotalHealthPots() > 0) {
-		player.hp = player.getHp() + 10;
-		System.out.println(player.getName() + " used the healing potion and healed for 10 hp! You have " + player.totalHealthPots + " left!");
+		player.hp = player.getHp() + 15 - r.nextInt(10);
+		System.out.println(player.getName() + " used the healing potion and now has " + player.totalHealthPots + " left!");
 		} else {
-			System.out.println(player.getName() + " ypu don't have any health pots left!");
+			System.out.println(player.getName() + " you don't have any health pots left!");
 		}
 	}
 }

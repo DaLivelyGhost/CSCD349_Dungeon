@@ -1,6 +1,7 @@
 /Arcanist.class
 /Attack.class
 /BaseAttack.class
+/Caretaker.class
 /CrushingBlow.class
 /Dungeon.class
 /DungeonCharacter.class
@@ -24,7 +25,7 @@
 /Potion_healing.class
 /Potion_vision.class
 /Room.class
-/SaveList.class
+/SaveState.class
 /Skeleton.class
 /Sorceress.class
 /SpecialHeal.class
@@ -33,9 +34,7 @@
 /Thief.class
 /Warrior.class
 /Zombie.class
+/combat.class
 /dungeonAdventure.class
 /entrance.class
 /exit.class
-/Caretaker.class
-/SaveState.class
-/combat.class

@@ -4,9 +4,9 @@ public  class DungeonCharacter {
 	protected  String name, characterType;
 	protected int attackSpeed , minDamage, maxDamage, hp;
 	protected  double hitChance; 
+	public Attack specialAttack;
 	
 	public DungeonCharacter() {
-		this.setName(name);
 		this.setName(name);
 		this.characterType = characterType;
 		this.hp = hp;
@@ -54,4 +54,30 @@ public  class DungeonCharacter {
 			//game end
 		}
 	}
+	
+	public boolean isAlive() {
+		return (this.hp > 0);
+	}
+	
+	public void specialAttack(DungeonCharacter opponent) {
+		specialAttack.attack(this, opponent);
+	}
+	
+	protected void basicAttack(DungeonCharacter attacky) {
+		boolean canAttack;
+		int damage;
+
+		canAttack = Math.random() <= this.hitChance;
+
+		if (canAttack) {
+			damage = (int)(Math.random() * (this.maxDamage - this.minDamage + 1))
+						+ this.minDamage ;
+			subtractHealth(damage, attacky);
+			System.out.println();
+		}//end if can attack
+		else {
+			System.out.println(this.getName() + "'s attack on " + attacky.getName() + " failed!");
+			System.out.println();
+		}//end else
+	}//end attack method
 }

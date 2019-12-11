@@ -10,7 +10,7 @@ public class Originator
 		 this.state = state;
 	}
 	
-	 public SaveState saveToSS()
+	 public SaveState saveToMomento()
 	 {
 		 System.out.println("Originator: Saving to Memento.");
 		 return new SaveState(state);

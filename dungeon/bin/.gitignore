@@ -36,3 +36,6 @@
 /dungeonAdventure.class
 /entrance.class
 /exit.class
+/Caretaker.class
+/SaveState.class
+/combat.class

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GameCycle {
@@ -29,9 +31,11 @@ public class GameCycle {
 			}
 		}
 		if(option == 1) {
-			//-----------------------------------------------
-				//SAVE GAME GOES HERE
-			//-----------------------------------------------
+	        List<Originator.SaveState> savedStates = new ArrayList<Originator.SaveState>();
+	        Originator ss = new Originator();
+	        ss.set("State1");
+	        savedStates.add(ss.saveToMomento());
+	        // call ss.restoreFromSS(savedStates.get(1));  to restore
 			RoomOptions(Dungeon, player);
 		}
 		if(option == 2) {
@@ -81,6 +85,31 @@ public class GameCycle {
 		}
 		RoomEnter(Dungeon, player);
 	}
+	
+	private static void Inventory(Hero player) {
+		int choice = 0;
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println(player.getName() + " you have " + player.getTotalHealthPots() + " health pots, " + player.getTotalVisionPots() + " vision pots, and " + player.getTotalPillars() + " Pillars of OO");
+		System.out.println("1. Use Health Pot");
+		System.out.println("2. Use Vision Pot");
+		System.out.println("3. Back to the game");
+		
+		while(choice < 1 || choice > 3) {
+			choice = input.nextInt();
+			input.nextLine();
+			
+			if(choice == 1) {
+				player.useHealingPotion();
+			}
+			if (choice == 2) {
+				player.useVisionPotion();
+			}
+			if (choice == 3 ) {
+				
+			}
+		}
+	}
 	private static void RoomEnter(Dungeon Dungeon, DungeonCharacter player) {
 		GameView.RoomEnter(Dungeon);
 		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6] != null) {
@@ -107,5 +136,4 @@ public class GameCycle {
 	//----------------------------------------------------------------
 		//Combat
 	//----------------------------------------------------------------
-	
 }

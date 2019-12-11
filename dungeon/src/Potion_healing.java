@@ -1,19 +1,23 @@
 
-public class Potion_healing {
-	//Change DungeonCharacter to Hero once Hero is made, maybe make it extend hero.
-	DungeonCharacter dungeoncharacter;
-	private int healingPotion;
+public class Potion_healing extends Hero{
 	
-	public Potion_healing() {
-		this.healingPotion = healingPotion;
+	int healpot;
+	
+	public void Potion_healing() {
+		this.healpot = healpot;
 	}
 	
-	public void getHealingPotion() {
-		healingPotion++;
+	public void addHealthPot() {
+		setTotalHealthPots(this.healpot + 1);
 	}
 	
 	public void useHealingPotion() {
-		dungeoncharacter.hp = dungeoncharacter.getHp() + 10;
-		System.out.println("You used the healing potion and healed for 10 hp!");
+		
+		if(this.totalHealthPots > 0) {
+		this.hp = this.getHp() + 10;
+		System.out.println(this.getName() + " used the healing potion and healed for 10 hp! You have " + this.totalHealthPots + " left!");
+		} else {
+			System.out.println(this.getName() + " ypu don't have any health pots left!");
+		}
 	}
 }

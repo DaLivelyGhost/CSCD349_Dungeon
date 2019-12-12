@@ -37,8 +37,9 @@ public class GameCycle {
 			GameView.printDivider();
 			if(option == 1) {
 				
-				dungeonMemento gamesave = new dungeonMemento(Dungeon, player);
-				DungeonSerialization.Serialization(gamesave);
+				Originator gamesave = new Originator(Dungeon, player);
+				dungeonMemento Save = gamesave.saveToMemento();
+				DungeonSerialization.Serialization(Save);
 	        	// call ss.restoreFromSS(savedStates.get(1));  to restore
 				RoomOptions(Dungeon, player, GameState);
 			}

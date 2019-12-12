@@ -47,18 +47,12 @@ public class Hero extends DungeonCharacter{
 	public void useVisionPotion(Dungeon Dungeon) {
 		Dungeon.vision = true;
 	}
-	//Methods to add items
-	public void addHealingPotion() {
-		totalHealthPots++;
-	}
-	
-	public void addVisionPoiton() {
-		totalHealthPots++;
-	}
-	
-	public void addPillar() {
-		totalPillars++;
-	}
+
 	//Create toString();
+	@Override
+	public String toString() {
+		return (this.getName() + " has " + this.getHp() + " hp left.\n" + this.getName() + " also has: " + this.totalHealthPots + " Health pots, " + this.totalVisionPots + " Vision pots, and " + this.totalPillars + " Pillars of OO\n");
+		
+	}
 }
 

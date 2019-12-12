@@ -21,7 +21,7 @@ public class GameView {
 	public static void roomOptions() {
 		System.out.println("1. Save\n"
 							+ "2. Move\n"
-							+ "3. Inventory");
+							+ "3. Inventory/Player Stats");
 	}
 	public static void move(Dungeon Dungeon, String[] choice) {
 		System.out.println("Move to which room?");

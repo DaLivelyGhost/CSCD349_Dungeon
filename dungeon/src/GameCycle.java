@@ -98,14 +98,8 @@ public class GameCycle {
 		int choice = 0;
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println(player.getName() 
-				+ " you have " 
-				+ player.getTotalHealthPots() 
-				+ " health pots, " 
-				+ player.getTotalVisionPots() 
-				+ " vision pots, and " 
-				+ player.getTotalPillars() 
-				+ " Pillars of OO");
+		System.out.println(player.toString());
+		
 		System.out.println("1. Use Health Pot");
 		System.out.println("2. Use Vision Pot");
 		System.out.println("3. Back to the game");

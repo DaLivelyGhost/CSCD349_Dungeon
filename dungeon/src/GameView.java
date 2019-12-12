@@ -21,7 +21,8 @@ public class GameView {
 	public static void roomOptions() {
 		System.out.println("1. Save\n"
 							+ "2. Move\n"
-							+ "3. Inventory/Player Stats");
+							+ "3. Inventory/Player Stats\n"
+							+ "4. Quit");
 	}
 	public static void Inventory(Hero player) {
 		System.out.println(player.toString());

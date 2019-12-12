@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList; 
 public class Originator
 {
-	private static Dungeon saveDungeon = new Dungeon(0, 0);
+	private static Dungeon saveDungeon = new Dungeon(5, 5);
 	private static Hero saveHero = new Hero();
 	
 	public Originator(Dungeon dungeon, Hero hero) {

@@ -2,20 +2,20 @@ import java.io.Serializable;
 
 public class dungeonMemento implements Serializable{
 	
-	private Dungeon saveDungeon = new Dungeon(5, 5);
-	private Hero saveHero = new Hero();
+	private static Dungeon saveDungeon = new Dungeon(5, 5);
+	private static Hero saveHero = new Hero();
 	
 	public dungeonMemento(Dungeon dungeon, Hero hero) {
 		this.saveDungeon = dungeon;
 		this.saveHero = hero;
 	}
 	
-	public Dungeon getDungeon() {
-		return this.saveDungeon;
+	public static Dungeon getDungeon() {
+		return saveDungeon;
 	}
 	
-	public Hero getHero() {
-		return this.saveHero;
+	public static Hero getHero() {
+		return saveHero;
 	}
 	
 	@Override

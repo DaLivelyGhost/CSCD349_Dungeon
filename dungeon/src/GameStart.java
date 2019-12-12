@@ -28,6 +28,7 @@ public class GameStart {
 			if(choice == 2) {
 				dungeonMemento gameSave = DungeonSerialization.Deserialization();
 				Originator.undoFromMemento(gameSave);
+				GameCycle.beginAdventure(dungeonMemento.getHero(), dungeonMemento.getDungeon());
 			}
 		}
 	}

@@ -7,7 +7,7 @@ import java.util.Random;
 public class GameCycle {
 	public static void beginAdventure(Hero player, Dungeon Dungeon) throws IOException {
 		GameView.AdventureStart(player, Dungeon);
-		int GameState = 0; //1 for game over, 2 for victory
+		int GameState = 0; //1 for game over, 2 for victory, 3 for quit
 		RoomOptions(Dungeon, player, GameState);
 	}
 	private static void RoomOptions(Dungeon Dungeon, Hero player, int GameState) throws IOException {
@@ -21,7 +21,7 @@ public class GameCycle {
 					option = input.nextInt();
 					input.nextLine();
 				
-					if(option != 1 && option != 2 && option != 3) {
+					if(option != 1 && option != 2 && option != 3 && option != 4) {
 						GameView.invalidInput();
 						option = 0;
 						GameView.roomOptions();
@@ -45,15 +45,22 @@ public class GameCycle {
 			if(option == 2) {
 				playerMove(Dungeon, player, input, GameState);
 			}
-			else {
+			if(option == 3) {
 				Inventory(player, Dungeon);
+				RoomOptions(Dungeon, player, GameState);
+			}
+			else {
+				GameState = 3;
 				RoomOptions(Dungeon, player, GameState);
 			}
 		}
 		if(GameState == 1) {
 			GameOver(input);
 		}
-		else {
+		if(GameState == 2) {
+			GameVictory(input);
+		}
+		if(GameState == 3) {
 			
 		}
 	}

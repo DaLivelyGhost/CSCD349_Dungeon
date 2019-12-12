@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
+
 public class combat {
 //engine for gameplay
 
@@ -25,8 +26,10 @@ public class combat {
 		if (!attacky.isAlive()) {
 		    System.out.println(attacker.getName() + " destroyed the " + attacky.getName());
 			int reward = r.nextInt(11);
+			
 			if(reward > 7) {
 				//Give player a health pot
+				
 			}
 		}else if (!attacker.isAlive()) {
 			System.out.println(attacker.getName() + " was destroyed by the " + attacky.getName());

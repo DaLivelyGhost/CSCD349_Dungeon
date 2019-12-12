@@ -135,25 +135,47 @@ public class Dungeon {
 		for(int i = 0; i < x_dimension; i++) {		//walk through each room
 			
 			toReturn = toReturn.concat("*");		//Left wall
-			
+	
 			for(int j = 0; j < y_dimension; j++) {
 				
-				toReturn = toReturn.concat(" ");
 				if(i == this.player_x && j == this.player_y) {
 					toReturn = toReturn.concat("[");
-					toReturn = toReturn.concat(Room[i][j].toString());	//player's location
-					toReturn = toReturn.concat("]");
 				}
 				else {
-					toReturn = toReturn.concat(Room[i][j].toString());	//concat the room's toString to the dungeon string
+					toReturn = toReturn.concat(" ");
+				}
+				if(vision) {
+					if(i - player_x <= 1 && i - player_x >= -1) {
+						if(j - player_y <= 1 && j - player_y >= -1) {
+							toReturn = toReturn.concat(Room[i][j].toString());
+						}
+						else {
+							if(i == this.player_x && j == this.player_y) {
+								toReturn = toReturn.concat("]");
+							}
+							else {
+								toReturn = toReturn.concat(" ");
+							}
+						}
+					}
+					else {
+						toReturn = toReturn.concat(" ");
+					}
+				}
+				else {
+					toReturn = toReturn.concat(" ");
 				}
 				if(j != y_dimension - 1) {
-					toReturn = toReturn.concat(" ");
+					if(i == this.player_x && j == this.player_y) {
+						toReturn = toReturn.concat("]");
+					}
+					else {
+						toReturn = toReturn.concat(" ");
+					}
 					toReturn = toReturn.concat("|");
 				}
 				
-				if(j == y_dimension - 1) {
-					
+				if(j == y_dimension - 1) {	
 					toReturn = toReturn.concat(" ");
 					toReturn = toReturn.concat("*");  //Right wall
 					toReturn = toReturn.concat("\n"); //new line
@@ -185,3 +207,4 @@ public class Dungeon {
 		return toReturn;
 	}
 }
+

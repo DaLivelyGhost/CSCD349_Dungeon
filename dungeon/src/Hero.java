@@ -44,8 +44,8 @@ public class Hero extends DungeonCharacter{
 		this.blockChance = blockChance;
 	} //End of getters and setters
 	
-	public void useVisionPotion() {
-		
+	public void useVisionPotion(Dungeon Dungeon) {
+		Dungeon.vision = true;
 	}
 	//Methods to add items
 	public void addHealingPotion() {

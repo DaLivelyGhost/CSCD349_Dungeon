@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Pit {
 	
-	public void Pit() {
+	public Pit() {
 		
 	}
 	

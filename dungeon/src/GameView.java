@@ -90,4 +90,19 @@ public class GameView {
 				+ "1. Accept\n"
 				+ "2. Decline");
 	}
+	public static void GameWin() {
+		System.out.println("You completed your quest and escaped the dungeon!\n"
+				+ "Play again?\n"
+				+ "\n"
+				+ "1. Accept\n"
+				+ "2. Decline");
+	}
+	public static void badEnding() {
+		System.out.println("The Dungeon claims another victim");
+		GameView.printDivider();
+	}
+	public static void goodEnding() {
+		System.out.println("Victory!");
+		GameView.printDivider();
+	}
 }

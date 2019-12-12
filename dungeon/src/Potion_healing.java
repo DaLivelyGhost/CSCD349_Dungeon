@@ -4,7 +4,7 @@ public class Potion_healing{
 	
 	int healpot;
 	
-	public void Potion_healing() {
+	public Potion_healing() {
 		this.healpot = healpot;
 	}
 	

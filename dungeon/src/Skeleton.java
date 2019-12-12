@@ -1,4 +1,6 @@
-public  class Skeleton extends Monster{
+import java.io.Serializable;
+
+public  class Skeleton extends Monster implements Serializable{
    public Skeleton()
    {
       this.name = "Skeleton";

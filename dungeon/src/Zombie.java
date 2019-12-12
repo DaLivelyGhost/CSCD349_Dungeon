@@ -1,4 +1,6 @@
-public class Zombie extends Monster{
+import java.io.Serializable;
+
+public class Zombie extends Monster implements Serializable{
    public Zombie()
    {
       this.name = "Zombie";

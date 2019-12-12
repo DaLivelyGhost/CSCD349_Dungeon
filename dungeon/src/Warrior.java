@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Warrior extends Hero{
+public class Warrior extends Hero implements Serializable{
 	
 	//Safe damage class, but needs to watch health
 	public Warrior() {

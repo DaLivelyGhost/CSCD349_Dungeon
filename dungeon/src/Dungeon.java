@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Dungeon {
+public class Dungeon implements Serializable{
 	private Room[][] Room;
 	final int x_dimension;
 	final int y_dimension;

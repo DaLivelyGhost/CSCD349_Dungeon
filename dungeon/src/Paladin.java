@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public  class Paladin extends Hero{
+public  class Paladin extends Hero implements Serializable{
 	
 	//Safe class that is good at everything
 	public Paladin() {

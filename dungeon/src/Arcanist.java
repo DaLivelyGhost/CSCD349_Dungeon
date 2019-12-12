@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public  class Arcanist extends Hero{
+public  class Arcanist extends Hero implements Serializable{
 	
 	//Chance based class, but starts with 3 health pots
 	public Arcanist() {

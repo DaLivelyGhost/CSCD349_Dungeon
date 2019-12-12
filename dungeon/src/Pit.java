@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Pit {
+public class Pit implements Serializable{
 	
 	public Pit() {
 		

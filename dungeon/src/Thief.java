@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public  class Thief extends Hero{
+public  class Thief extends Hero implements Serializable{
 	
 	//Chance based class
 	public Thief() {

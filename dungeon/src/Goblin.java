@@ -1,4 +1,6 @@
-public  class Goblin extends Monster{
+import java.io.Serializable;
+
+public  class Goblin extends Monster implements Serializable{
 	
    public Goblin()
 	{

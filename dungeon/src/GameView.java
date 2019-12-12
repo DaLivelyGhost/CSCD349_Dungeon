@@ -23,6 +23,25 @@ public class GameView {
 							+ "2. Move\n"
 							+ "3. Inventory/Player Stats");
 	}
+	public static void Inventory(Hero player) {
+		System.out.println(player.toString());
+		
+		System.out.println("1. Use a Health Potion");
+		System.out.println("2. Use a Vision Potion");
+		System.out.println("3. Back to the game");
+	}
+	public static void InsufficientHealPots() {
+		System.out.println("Insufficient health potions!");
+	}
+	public static void InsufficientVisionPots(){
+		System.out.println("Insufficient vision potions!");
+	}
+	public static void drinkVisionPotion() {
+		System.out.println("The area around you has been revealed for 1 movement.");
+	}
+	public static void drinkHealthPotion(Hero player) {
+		System.out.println(player.getName() + " used the healing potion and now has " + player.totalHealthPots + " left!");
+	}
 	public static void move(Dungeon Dungeon, String[] choice) {
 		System.out.println("Move to which room?");
 		System.out.println("");

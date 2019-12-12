@@ -99,12 +99,6 @@ public class GameCycle {
 		int choice = 0;
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println(player.toString());
-		
-		System.out.println("1. Use Health Pot");
-		System.out.println("2. Use Vision Pot");
-		System.out.println("3. Back to the game");
-		
 		while(choice < 1 || choice > 3) {
 			try {
 				choice = input.nextInt();
@@ -120,10 +114,21 @@ public class GameCycle {
 			}
 		}
 		if(choice == 1) {
-			Potion_healing.useHealingPotion(player);
+			if(player.getTotalHealthPots() >= 1) {
+				Potion_healing.useHealingPotion(player);
+			}
+			else {
+				GameView.InsufficientHealPots();
+			}
 		}
 		if (choice == 2) {
-			player.useVisionPotion(Dungeon);
+			if(player.getTotalVisionPots() < 1) {
+				player.useVisionPotion(Dungeon);
+				GameView.drinkVisionPotion();
+			}
+			else {
+				GameView.InsufficientVisionPots();
+			}
 
 		}
 		if (choice == 3 ) {}

@@ -20,9 +20,6 @@ public class Room implements Serializable{
 		this.visited = false;
 	}
 	public void populateRoom(Object item) {	//IN PROGRESS
-//		int i;
-//		for(i = 0; i < content.length && content[i] != null; i++) {} //find the first null entry in the array
-//		content[i] = item;
 		if(item instanceof Pit) {	//0 for pits
 			this.content[0] = item;
 			this.setIcon("P");

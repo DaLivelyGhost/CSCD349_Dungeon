@@ -47,7 +47,7 @@ public class Dungeon implements Serializable{
 			if(vision > 8) {				//20% chance
 				Room[i][j].populateRoom(new Potion_vision());		//vision potion item goes here
 			}
-			if(healing > 8) {				//20% chance
+			if(healing > 7) {				//40% chance
 				Room[i][j].populateRoom(new Potion_healing());		//healing potion item goes here
 			}		
 			if(monster > 8) {//20% chance
@@ -82,8 +82,7 @@ public class Dungeon implements Serializable{
 			exit_y = r.nextInt(y);
 			entrance_x = r.nextInt(x);
 			entrance_y = r.nextInt(y);
-		}while(Room[exit_x][exit_y].x != Room[entrance_x][entrance_y].x			
-				&& Room[exit_x][exit_y].y != Room[entrance_x][entrance_y].y);
+		}while((exit_y == entrance_y) && (exit_x == entrance_x));
 		
 		Room[exit_x][exit_y].deleteContents();
 		Room[exit_x][exit_y].populateRoom(new exit());
@@ -105,8 +104,8 @@ public class Dungeon implements Serializable{
 			do {
 			temp1 = r.nextInt(x);
 			temp2 = r.nextInt(y);
-			} while(Room[temp1][temp2].icon.compareTo("I") == 0 || Room[temp1][temp2].icon.compareTo("O") == 0
-					|| Room[temp1][temp2].icon.compareTo("$") == 0);
+			} while(Room[temp1][temp2].content[1] != null || Room[temp1][temp2].content[2] != null
+					|| Room[temp1][temp2].content[3] != null);
 			
 			Room[temp1][temp2].populateRoom(new Pillar_of_OO());
 			Room[temp1][temp2].setIcon("$");

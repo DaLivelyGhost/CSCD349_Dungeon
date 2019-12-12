@@ -41,18 +41,19 @@ public class GameCycle {
 				dungeonMemento Save = gamesave.saveToMemento();
 				DungeonSerialization.Serialization(Save);
 	        	// call ss.restoreFromSS(savedStates.get(1));  to restore
-				RoomOptions(Dungeon, player, GameState);
+				option = 0;
 			}
 			if(option == 2) {
 				playerMove(Dungeon, player, input, GameState);
+				option = 0;
 			}
 			if(option == 3) {
 				Inventory(player, Dungeon);
-				RoomOptions(Dungeon, player, GameState);
+				option = 0;
 			}
 			else {
 				GameState = 3;
-				RoomOptions(Dungeon, player, GameState);
+				option = 0;
 			}
 		}
 		if(GameState == 1) {
@@ -166,53 +167,58 @@ public class GameCycle {
 			Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6] = null;
 		}
 		//------------------------------------------------------------------------
-		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[0] != null) {//pit
-			Pit pit = (Pit)Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[0];
-			pit.damagePit(player);		
+		if(GameState == 0) {
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[0] != null) {//pit
+				Pit pit = (Pit)Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[0];
+				pit.damagePit(player);		
 			
-			if(!player.isAlive()) {
-				GameState = 1;
-				RoomOptions(Dungeon, player, GameState);
+				if(!player.isAlive()) {
+					GameState = 1;
+					RoomOptions(Dungeon, player, GameState);
+				}
 			}
-		}
-		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[2] != null) {//exit
-			//TO DO: check for if 4 pillars are collected. If so, end game.
-			if(player.getTotalPillars() == 4) {
-				GameState = 2;
-				RoomOptions(Dungeon, player, GameState);
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[2] != null) {//exit
+				//TO DO: check for if 4 pillars are collected. If so, end game.
+				if(player.getTotalPillars() == 4) {
+					GameState = 2;
+					RoomOptions(Dungeon, player, GameState);
+				}
 			}
-		}
-		//------------------------------------------------------------------------
-		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] != null) {//pillar
-			GameView.pickUp(3);
-			player.setTotalPillars(player.getTotalPillars() + 1);
-			Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] = null;
-		}
-		//------------------------------------------------------------------------
-		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] != null) {//healing pot
-			GameView.pickUp(4);
-			player.setTotalHealthPots(player.getTotalHealthPots() + 1);
-			Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] = null;
-		}
-		//------------------------------------------------------------------------
-		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] != null) {//vision pot
-			GameView.pickUp(5);
-			player.setTotalVisionPots(player.getTotalHealthPots() + 1);
-			Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] = null;
-		}
-		//------------------------------------------------------------------------
-		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("O") != 0
-				&& Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("I") != 0
-				&& Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("P") != 0) {
-			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("P") == 0) {
-				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).setIcon("P");
+			//------------------------------------------------------------------------
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] != null) {//pillar
+				GameView.pickUp(3);
+				player.setTotalPillars(player.getTotalPillars() + 1);
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] = null;
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).objectNumber--;
 			}
-			else {
-				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).setIcon("E");
+			//------------------------------------------------------------------------
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] != null) {//healing pot
+				GameView.pickUp(4);
+				player.setTotalHealthPots(player.getTotalHealthPots() + 1);
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] = null;
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).objectNumber--;
 			}
-		}
+			//------------------------------------------------------------------------
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] != null) {//vision pot
+				GameView.pickUp(5);
+				player.setTotalVisionPots(player.getTotalHealthPots() + 1);
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] = null;
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).objectNumber--;
+			}
+			//------------------------------------------------------------------------
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("O") != 0
+					&& Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("I") != 0
+					&& Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("P") != 0) {
+				if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("P") == 0) {
+					Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).setIcon("P");
+				}
+				else {
+					Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).setIcon("E");
+				}
+			}
 		
-		RoomOptions(Dungeon, player, GameState);
+			RoomOptions(Dungeon, player, GameState);
+		}
 	}
 	private static void GameOver(Scanner input) throws IOException {
 		int restart = 0;

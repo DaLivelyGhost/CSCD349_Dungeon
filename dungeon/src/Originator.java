@@ -2,12 +2,12 @@ import java.util.List;
 import java.util.ArrayList; 
 public class Originator
 {
-	private Dungeon saveDungeon = new Dungeon(0, 0);
-	private Hero saveHero = new Hero();
+	private static Dungeon saveDungeon = new Dungeon(0, 0);
+	private static Hero saveHero = new Hero();
 	
 	public Originator(Dungeon dungeon, Hero hero) {
-		this.saveDungeon = dungeon;
-		this.saveHero = hero;
+		saveDungeon = dungeon;
+		saveHero = hero;
 	}
 	
 	public Dungeon getDungeon() {
@@ -32,9 +32,9 @@ public class Originator
 		return gamesave;
 	}
 	
-	public void undoFromMemento(dungeonMemento gamesave) {
-		this.saveDungeon = gamesave.getDungeon();
-		this.saveHero = gamesave.getHero();
+	public static void undoFromMemento(dungeonMemento gamesave) {
+		saveDungeon = gamesave.getDungeon();
+		saveHero = gamesave.getHero();
 	}
 	
 	public void print() {

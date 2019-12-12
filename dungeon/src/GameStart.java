@@ -1,6 +1,36 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GameStart {
+	public static void loadGame() throws ClassNotFoundException, IOException {
+		Scanner input = new Scanner(System.in);
+		int choice = 0;
+		
+		StartView.gameLoad();
+		
+		while(choice == 0) {
+			try {
+				choice = input.nextInt();
+				input.nextLine();
+				
+				if(choice != 1 && choice != 2) {
+					choice = 0;
+					StartView.gameLoad();
+				}
+			}
+			catch(Exception e) {
+				e = new Exception("Invalid input type!");
+				GameView.printException(e);
+				choice = 0;
+				input = new Scanner(System.in);
+				StartView.gameLoad();
+			}
+			if(choice == 2) {
+				dungeonMemento gameSave = DungeonSerialization.Deserialization();
+				Originator.undoFromMemento(gameSave);
+			}
+		}
+	}
 	//-------------------------------------------
 		//Character Creation
 	//-------------------------------------------

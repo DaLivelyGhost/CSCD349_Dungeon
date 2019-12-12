@@ -98,19 +98,22 @@ public class GameCycle {
 	private static void Inventory(Hero player, Dungeon Dungeon) {
 		int choice = 0;
 		Scanner input = new Scanner(System.in);
+		GameView.Inventory(player);
 		
-		while(choice < 1 || choice > 3) {
+		while(choice == 0) {
 			try {
 				choice = input.nextInt();
 				input.nextLine();
 				
 				if(choice != 1 && choice != 2 && choice != 3) {
 					choice = 0;
+					GameView.invalidInput();
 				}
 			}
 			catch(Exception e) {
 				e = new Exception("Invalid input type!");
 				choice = 0;
+				input = new Scanner(System.in);
 			}
 		}
 		if(choice == 1) {
@@ -122,7 +125,7 @@ public class GameCycle {
 			}
 		}
 		if (choice == 2) {
-			if(player.getTotalVisionPots() < 1) {
+			if(player.getTotalVisionPots() >= 1) {
 				player.useVisionPotion(Dungeon);
 				GameView.drinkVisionPotion();
 			}

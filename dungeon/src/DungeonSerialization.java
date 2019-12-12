@@ -28,7 +28,7 @@ public class DungeonSerialization implements Serializable{
         System.out.println("Game has been saved to gamesaves.txt\n");
 	}
 	
-	public dungeonMemento Deserialization() throws IOException, ClassNotFoundException {
+	public  static dungeonMemento Deserialization() throws IOException, ClassNotFoundException {
 		
 		if(DungeonSerialization.filename .equals(null)) {
 			throw new IOException("No file with that name");

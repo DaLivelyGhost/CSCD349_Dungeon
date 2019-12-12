@@ -1,6 +1,11 @@
 //This is the view for the game start class.
 //This class will not be in use after the game is initialized.
 public class StartView {
+	public static void gameLoad() {
+		System.out.println("----GAME START----\n"
+				+ "1. New Game\n"
+				+ "2. Load Game");
+	}
 	public static void playerName() {
 		System.out.println("Enter the name of your hero:");
 	}

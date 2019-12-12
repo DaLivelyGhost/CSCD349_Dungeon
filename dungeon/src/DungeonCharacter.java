@@ -1,5 +1,4 @@
-//FEEL FREE TO REPLACE WHEN BUILDING THE ACTUAL PRODUCT
-//JUST TEMPORARY TO TEST THE GAMECYCLE/GAMESTART
+
 public  class DungeonCharacter {
 	protected  String name, characterType;
 	protected int attackSpeed , minDamage, maxDamage, hp;
@@ -34,20 +33,16 @@ public  class DungeonCharacter {
 	public void addHealth(int hp) {
 		
 		if(this.hp <= 0) {
-			System.out.println("HP must be above 0 to heal, how are you alive?");
+			CombatView.cantHeal();
 		} else {
 			this.hp += hp;
-			System.out.println("You have healed and now are at " + this.hp);
+			CombatView.heal(this);
 		}
 	}
 	
 	public void subtractHealth(int damage, DungeonCharacter that) {
-		
 		that.hp -= damage;
-			
-		System.out.println(this.name + " hit " + " for <" + hp + "> points damage.");
-		System.out.println(that.name + " now has " + that.hp + " hit points remaining.");
-		System.out.println();
+		CombatView.CombatDamage(this, that, damage);
 	}
 	
 	public boolean isAlive() {
@@ -68,11 +63,9 @@ public  class DungeonCharacter {
 			damage = (int)(Math.random() * (this.maxDamage - this.minDamage + 1))
 						+ this.minDamage ;
 			subtractHealth(damage, attacky);
-			System.out.println();
 		}//end if can attack
 		else {
-			System.out.println(this.getName() + "'s attack on " + attacky.getName() + " failed!");
-			System.out.println();
+			CombatView.failedAttack(this, attacky);
 		}//end else
 	}//end attack method
 }

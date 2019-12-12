@@ -5,14 +5,16 @@ public class StartView {
 		System.out.println("Enter the name of your hero:");
 	}
 	public static void playerClass() {
+		GameView.printDivider();
 		System.out.println("Enter your class: \n"
 				+ "1.Warrior \n"
 				+ "2.Sorceress \n"
 				+ "3.Thief \n"
 				+ "4 Paladin\n"
-				+ "5 Arcanist\n");
+				+ "5 Arcanist");
 	}
 	public static void dungeonSize() {
+		GameView.printDivider();
 		System.out.println("What size of dungeon will you explore? (must have over 6 rooms)");
 	}
 	public static void x() {

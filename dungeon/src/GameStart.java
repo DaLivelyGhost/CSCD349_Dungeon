@@ -35,10 +35,19 @@ public class GameStart {
 			try {
 				choice = input.nextInt();
 				input.nextLine();
+				
+				if(choice < 1 || choice > 5) {
+					GameView.invalidInput();
+					StartView.playerClass();
+					choice = 0;
+				}
 			}
 			catch(Exception e) {
-				e = new Exception("Invalid input");
+				e = new Exception("Invalid input type");
+				GameView.printException(e);
+				StartView.playerClass();
 				choice = 0;
+				input = new Scanner(System.in);
 			}
 		}
 		switch(choice) {

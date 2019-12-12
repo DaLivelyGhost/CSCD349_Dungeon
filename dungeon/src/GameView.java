@@ -29,6 +29,12 @@ public class GameView {
 		
 		int i = 1;
 		System.out.print(Dungeon.toString());
+		
+		//if a vision potion was used, this will end it
+		if(Dungeon.vision) {
+			Dungeon.vision = false;
+		}
+		
 		String options = ("");
 	
 		if(Dungeon.player_x > 0) {
@@ -63,10 +69,11 @@ public class GameView {
 	public static void RoomEnter(Dungeon Dungeon) {
 		String output = Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).description;
 		System.out.println(output);
+		printDivider();
 		
 	}
 	public static void pickUp(int pickup) {
-		printDivider();
+		//printDivider();
 		if(pickup == 3) {
 			System.out.println("You acquired a pillar of OO!\n" 
 					+ "You come closer to finishing your goal!");
@@ -77,8 +84,9 @@ public class GameView {
 		}
 		if(pickup == 5) {
 			System.out.println("You acquired a vision potion!\n"
-					+ "The path to the finish becomes clearer!");
+					+ "The path to victory becomes clearer!");
 		}
+		printDivider();
 	}
 	//----------------------------------------------------------------
 		//Combat

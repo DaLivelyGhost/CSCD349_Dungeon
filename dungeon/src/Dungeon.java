@@ -159,11 +159,21 @@ public class Dungeon {
 						}
 					}
 					else {
-						toReturn = toReturn.concat(" ");
+						if(Room[i][j].visited == true) {
+							toReturn = toReturn.concat(Room[i][j].toString());
+						}
+						else {
+							toReturn = toReturn.concat(" ");
+						}
 					}
 				}
 				else {
-					toReturn = toReturn.concat(" ");
+					if((i == player_x && j == player_y) || Room[i][j].visited == true) {
+						toReturn = toReturn.concat(Room[i][j].toString());
+					}
+					else {
+						toReturn = toReturn.concat(" ");
+					}
 				}
 				if(j != y_dimension - 1) {
 					if(i == this.player_x && j == this.player_y) {
@@ -176,7 +186,12 @@ public class Dungeon {
 				}
 				
 				if(j == y_dimension - 1) {	
-					toReturn = toReturn.concat(" ");
+					if(i == player_x && j == player_y) {
+						toReturn = toReturn.concat("]");
+					}
+					else {
+						toReturn = toReturn.concat(" ");
+					}
 					toReturn = toReturn.concat("*");  //Right wall
 					toReturn = toReturn.concat("\n"); //new line
 				}

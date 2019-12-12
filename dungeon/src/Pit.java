@@ -11,6 +11,6 @@ public class Pit {
 		Random r = new Random();
 		
 		player.hp = player.hp - (20 - r.nextInt(19));
-		System.out.println(player.getName() + " feel into a pit and now has " + player.hp + " left");
+		CombatView.pitFall(player);
 	}
 }

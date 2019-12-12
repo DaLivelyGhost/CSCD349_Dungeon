@@ -5,8 +5,9 @@ public class Room {
 	int x;			//Coordinates
 	int y;
 	int objectNumber;	//number of objects, not in use yet, but will be later.
-	String icon;
-	String description;
+	String icon;		//icon on the map
+	String description;	//description of the room when entered
+	boolean visited;	//if visited, will still persist on the map
 	
 	public Room(int x, int y) {
 		this.x = x;							//coordinates
@@ -14,7 +15,8 @@ public class Room {
 		this.content = new Object[7];		//array to hold everything in the room
 		this.objectNumber = 0;				//number of objects in the room
 		icon = "E";							//contents of room (currently empty)
-		this.description = "The Room is full of rubble and stale air.";
+		this.description = "The Room is empty and foreboding.";
+		this.visited = false;
 	}
 	public void populateRoom(Object item) {	//IN PROGRESS
 //		int i;
@@ -29,6 +31,7 @@ public class Room {
 			this.content[1] = item;
 			this.setIcon("I");
 			this.description = "The entrance of the dungeon. Your business here is done.";
+			this.visited = true;
 		}
 		if(item instanceof exit) {	//2 for exit
 			this.content[2] = item;
@@ -88,13 +91,13 @@ public class Room {
 		}
 		else {
 			switch(r) {
-			case 0: output = output.concat("A corpse is sticking out of rubble in the corner of the room. After searching the rubble, you find some items of use.\n");
+			case 0: output = output.concat("A corpse is sticking out of rubble in the corner of the room. After searching the rubble, you find some items of use.");
 				break;
-			case 1: output = output.concat("It's hard to make out the contents of the dimly lit room, but upon investigation, you find some items worth keeping.\n");
+			case 1: output = output.concat("It's hard to make out the contents of the dimly lit room, but upon investigation, you find some items worth keeping.");
 				break;
-			case 2: output = output.concat("The hole in the ceiling lets in just enough light to make out the contents of the room.\n");
+			case 2: output = output.concat("The hole in the ceiling lets in just enough light to make out the contents of the room.");
 				break;
-			case 3: output = output.concat("Torches line the walls in this room illuminating a chest in the center.\n");
+			case 3: output = output.concat("Torches line the walls in this room illuminating a chest in the center.");
 			}
 			
 		}

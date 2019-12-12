@@ -60,11 +60,8 @@ public abstract class Monster extends DungeonCharacter{
 	   if(canHeal)
 	   {
 		   healPoints = (int)(Math.random() * (maxHeal - minHeal + 1)) + minHeal;
-
 		   addHealth(healPoints);
-		   System.out.println(name + " healed itself for " + healPoints + " points.\n"
-							   + "Total hit points remaining are: " + hpPerTurn);
-		   System.out.println();
+		   CombatView.monsterHeal(this, healPoints);
 	   }//end can heal
    }//end heal method
 }   

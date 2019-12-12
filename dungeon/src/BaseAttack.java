@@ -9,9 +9,9 @@ public class BaseAttack implements Attack{
 		if(hitCheck == true) {
 			int basicAttack = (int)(Math.random() * (attacker.maxDamage - attacker.minDamage + 1));
 			attacker.subtractHealth(basicAttack, attacky);
-			System.out.println(attacker.getName() + " hit " + attacky.getName() + " for " + basicAttack + "!");
+			CombatView.CombatDamage(attacker, attacky, basicAttack);
 		} else {
-			System.out.println(attacker.getName() + " attack missed!");
+			CombatView.failedAttack(attacker, attacky);
 		}
 	}
 	

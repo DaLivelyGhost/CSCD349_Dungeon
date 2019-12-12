@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 public class GameCycle {
 	public static void beginAdventure(Hero player, Dungeon Dungeon) {
@@ -123,24 +124,32 @@ public class GameCycle {
 		}
 		if (choice == 2) {
 			player.useVisionPotion(Dungeon);
-			System.out.println(Dungeon.toString());
-			Dungeon.vision = false;
+
 		}
 		if (choice == 3 ) {}
 		GameView.printDivider();
 	}
 	private static void RoomEnter(Dungeon Dungeon, Hero player, int GameState) {
+		Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).visited = true;
 		GameView.RoomEnter(Dungeon);
 		
 		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6] != null) {//Monster
+			
 			combat.battle(player, (Monster)Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6]);
 			
 			if(!player.isAlive()) {
 				GameState = 1;
 				RoomOptions(Dungeon, player, GameState);
 			}
+			Random r = new Random();
+			int reward = r.nextInt(11);
+			
+			if(reward > 7) {
+				player.setTotalHealthPots(player.getTotalHealthPots() + 1);
+			}
 			Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[6] = null;
 		}
+		//------------------------------------------------------------------------
 		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[0] != null) {//pit
 			Pit pit = (Pit)Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[0];
 			pit.damagePit(player);		
@@ -157,21 +166,36 @@ public class GameCycle {
 				RoomOptions(Dungeon, player, GameState);
 			}
 		}
+		//------------------------------------------------------------------------
 		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] != null) {//pillar
 			GameView.pickUp(3);
 			player.setTotalPillars(player.getTotalPillars() + 1);
 			Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[3] = null;
 		}
+		//------------------------------------------------------------------------
 		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] != null) {//healing pot
 			GameView.pickUp(4);
 			player.setTotalHealthPots(player.getTotalHealthPots() + 1);
 			Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[4] = null;
 		}
+		//------------------------------------------------------------------------
 		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] != null) {//vision pot
 			GameView.pickUp(5);
 			player.setTotalVisionPots(player.getTotalHealthPots() + 1);
 			Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).content[5] = null;
-		}		
+		}
+		//------------------------------------------------------------------------
+		if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("O") != 0
+				&& Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("I") != 0
+				&& Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("P") != 0) {
+			if(Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).icon.compareTo("P") == 0) {
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).setIcon("P");
+			}
+			else {
+				Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).setIcon("E");
+			}
+		}
+		
 		RoomOptions(Dungeon, player, GameState);
 	}
 	private static void GameOver(Scanner input) {

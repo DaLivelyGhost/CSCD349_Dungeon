@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public  class Sorceress extends Hero{
+public  class Sorceress extends Hero implements Serializable{
 	
 	//Another safe class which is easy to use
 	public Sorceress() {

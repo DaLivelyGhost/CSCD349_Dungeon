@@ -1,4 +1,6 @@
-public  class Ogre extends Monster {
+import java.io.Serializable;
+
+public  class Ogre extends Monster implements Serializable{
    public Ogre()
 	{
       this.name = "Ogre";

@@ -1,15 +1,16 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
 public class GameCycle {
-	public static void beginAdventure(Hero player, Dungeon Dungeon) {
+	public static void beginAdventure(Hero player, Dungeon Dungeon) throws IOException {
 		GameView.AdventureStart(player, Dungeon);
 		int GameState = 0; //1 for game over, 2 for victory
 		RoomOptions(Dungeon, player, GameState);
 	}
-	private static void RoomOptions(Dungeon Dungeon, Hero player, int GameState) {
+	private static void RoomOptions(Dungeon Dungeon, Hero player, int GameState) throws IOException {
 		Scanner input = new Scanner(System.in);
 		int option = 0;	
 		
@@ -35,10 +36,9 @@ public class GameCycle {
 			}
 			GameView.printDivider();
 			if(option == 1) {
-	        	List<Originator.SaveState> savedStates = new ArrayList<Originator.SaveState>();
-	        	Originator ss = new Originator();
-	        	ss.set("State1");
-	        	savedStates.add(ss.saveToMomento());
+				
+				dungeonMemento gamesave = new dungeonMemento(Dungeon, player);
+				DungeonSerialization.Serialization(gamesave);
 	        	// call ss.restoreFromSS(savedStates.get(1));  to restore
 				RoomOptions(Dungeon, player, GameState);
 			}
@@ -57,7 +57,7 @@ public class GameCycle {
 			
 		}
 	}
-	private static void playerMove(Dungeon Dungeon, Hero player, Scanner input, int GameState) {
+	private static void playerMove(Dungeon Dungeon, Hero player, Scanner input, int GameState) throws IOException {
 		int option = 0;
 		String[] Roomchoice = new String[5];
 		GameView.move(Dungeon, Roomchoice);
@@ -134,7 +134,7 @@ public class GameCycle {
 		if (choice == 3 ) {}
 		GameView.printDivider();
 	}
-	private static void RoomEnter(Dungeon Dungeon, Hero player, int GameState) {
+	private static void RoomEnter(Dungeon Dungeon, Hero player, int GameState) throws IOException {
 		Dungeon.getRoom(Dungeon.player_x, Dungeon.player_y).visited = true;
 		GameView.RoomEnter(Dungeon);
 		
@@ -203,7 +203,7 @@ public class GameCycle {
 		
 		RoomOptions(Dungeon, player, GameState);
 	}
-	private static void GameOver(Scanner input) {
+	private static void GameOver(Scanner input) throws IOException {
 		int restart = 0;
 		GameView.GameOver();
 		while(restart == 0){
@@ -233,7 +233,7 @@ public class GameCycle {
 			GameView.badEnding();
 		}
 	}
-	private static void GameVictory(Scanner input) {
+	private static void GameVictory(Scanner input) throws IOException {
 		int restart = 0;
 		GameView.GameWin();
 		while(restart == 0){

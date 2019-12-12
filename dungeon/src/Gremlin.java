@@ -1,4 +1,6 @@
-public  class Gremlin extends Monster{
+import java.io.Serializable;
+
+public  class Gremlin extends Monster implements Serializable{
    public Gremlin()
    {
       this.name = "Gremlin";

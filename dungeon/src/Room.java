@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Room {
+public class Room implements Serializable{
 	Object[] content;
 	int x;			//Coordinates
 	int y;

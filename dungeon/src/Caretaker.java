@@ -1,16 +1,20 @@
 import java.util.List;
-import java.util.ArrayList; 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque; 
 
 public class Caretaker {
-	  public void Saves()
-	  {
-         List<Originator.SaveState> savedStates = new ArrayList<Originator.SaveState>();
-         Originator ss = new Originator();
-         ss.set("State1");
-         ss.set("State2");
-         savedStates.add(ss.saveToMomento());
-         ss.set("State3");
-         savedStates.add(ss.saveToMomento());
-         ss.set("State4");
-         ss.restoreFromSS(savedStates.get(1));       } 
+	
+	final static Deque<dungeonMemento> mementos =  new ArrayDeque();
+	
+	public dungeonMemento getMemento() {
+		
+		dungeonMemento gamesave = mementos.pop();
+		return gamesave;
+	}
+	
+	public static void addMemento(dungeonMemento memento) {
+		
+		mementos.push(memento);
+	}
 }

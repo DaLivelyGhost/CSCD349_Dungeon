@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Potion_healing{
+public class Potion_healing implements Serializable{
 	
 	int healpot;
 	

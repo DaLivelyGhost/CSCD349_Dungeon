@@ -181,7 +181,6 @@ public class GameCycle {
 				//TO DO: check for if 4 pillars are collected. If so, end game.
 				if(player.getTotalPillars() == 4) {
 					GameState = 2;
-					RoomOptions(Dungeon, player, GameState);
 				}
 			}
 			//------------------------------------------------------------------------
